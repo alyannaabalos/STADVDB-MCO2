@@ -8,12 +8,22 @@
     <title>DDBMS</title>
 </head>
 <body>   
-    <div>
-        <select name="selection" id="selection">
-            <option value="all" class="drpdown">ALL MOVIES</option>
-            <option value="before" class="drpdown">Movies before 1980</option>
-            <option value="after" class="drpdown">Movies after 1980</option>
-        </select>
+    <div class="header">
+        <div id="item1">
+            <select name="selection" id="selection">
+                <option value="all">ALL MOVIES</option>
+                <option value="before">Movies before 1980</option>
+                <option value="after">Movies after 1980</option>
+            </select>
+        </div>
+
+        <div id="item2">
+            <button id="add"> + Add </button>
+        </div>
     </div>  
+
+    <div id="search">
+        <input type="text" placeholder="Search.." height="50px">
+    </div>
 </body>
 </html>
