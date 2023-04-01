@@ -1,8 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@100&display=swap');
 
-h1 {
-    font-family: 'Barlow Semi Condensed', sans-serif;
-    font-size: 30px;
-    color: #9114ff;
+
+div {
     padding-left: 10px;
+    padding-top: 10px;
 }
+
+#selection {
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-size: 25px;
+    color: #9114ff;
+    border: none;
+}
+
