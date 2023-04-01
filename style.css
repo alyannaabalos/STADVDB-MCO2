@@ -2,11 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
 
 #add {
-    font-size: 20px;
     font-family: 'Barlow Semi Condensed', sans-serif;
     border-radius: 10%;
-    border-color: #9114ff;
-    color: #9114ff;
+    border-color: lightgray;
+    color: black;
 }
 
 #delete {
@@ -25,8 +24,10 @@
 }
 
 #item2 {
-    display:inline-block;
-    padding-left: 850px;
+    display: block;
+    float: right;
+    padding-top: 35px;
+    padding-right: 40px;
 }
 
 #selection {
@@ -55,7 +56,7 @@
 table, th, td, tr{
     border: none;
     table-layout: fixed;
-    width: 97%;
+    width: 95%;
     font-family: 'Barlow Semi Condensed', sans-serif;
     color: #9114ff;
 }
@@ -66,5 +67,10 @@ th{
 
 tr:nth-child(even) {
     background-color: rgb(220, 220, 220);
+}
+
+tr input{
+    width: 340px;
+    border: 0px;
 }
 
