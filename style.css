@@ -37,8 +37,10 @@
 }
 
 #search {
-    padding-left: 10px;
     padding-top: 25px;
+    padding-bottom: 25px;
+    padding-right: 40px;
+    float: right;
 }
 
 #search input {
