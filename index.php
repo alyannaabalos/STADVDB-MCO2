@@ -31,6 +31,41 @@
               <th>Director</th>
               <th>Actor</th>
             </tr>
+
+            <?php
+                $servername = "localhost";
+                $username = "root";
+                $password = "";
+                $database = "mco2";
+
+                $connection = new mysqli($servername, $username, $password, $database);
+
+                if ($connection->connect_error) {
+                  die("Connection failed: " . $connection->connect_error);
+                }
+
+                $sql = "SELECT * FROM MCO2.node_1 WHERE id < 20";
+                $result = $connection->query($sql);
+
+                if(!$result) {
+                  die("Invalid query: " . $connection->error);
+                }
+
+                while ($row = $result->fetch_assoc()) {
+                  echo "<tr>
+                  <td>" . $row["id"] . "</td>
+                  <td>" . $row["year"] . "</td>
+                  <td>". $row["genre"] . "</td>
+                  <td>" . $row["actor"] . "</td>
+                  <td>" . $row["director"] . "</td>
+                  <td><button id='delete'>x</button></td>
+                </tr>";
+              
+                }
+
+            ?>
+
+
             <tr>
               <td>#28</td>
               <td>2002</td>
