@@ -10,11 +10,13 @@
 <body>   
     <div class="header">
         <div id="item1">
-            <select name="selection" id="selection">
-                <option value="all">ALL MOVIES</option>
-                <option value="before">Movies before 1980</option>
-                <option value="after">Movies after 1980</option>
+          <form method="post">
+            <select name="selection" id="selection" onchange="this.form.submit()">
+                <option value="all" <?php if(isset($_POST['selection']) && $_POST['selection']=='all'){echo 'selected';} ?>>ALL MOVIES</option>
+                <option value="before" <?php if(isset($_POST['selection']) && $_POST['selection']=='before'){echo 'selected';} ?>>Movies before 1980</option>
+                <option value="after" <?php if(isset($_POST['selection']) && $_POST['selection']=='after'){echo 'selected';} ?>>Movies after 1980</option>
             </select>
+          </form>
         </div>
     </div>  
 
@@ -44,52 +46,41 @@
                   die("Connection failed: " . $connection->connect_error);
                 }
 
-                $sql = "SELECT * FROM MCO2.node_1 WHERE id < 20";
-                $result = $connection->query($sql);
-
-                if(!$result) {
-                  die("Invalid query: " . $connection->error);
+                if (isset($_POST['selection'])) {
+                    if ($_POST['selection'] == 'before') {
+                        $sql = "SELECT * FROM MCO2.node_2";
+                    } elseif ($_POST['selection'] == 'after') {
+                        $sql = "SELECT * FROM MCO2.node_3";
+                    } else {
+                        $sql = "SELECT * FROM MCO2.node_1";
+                    }
+                }
+                else {
+                  // Default selection value
+                  $sql = "SELECT * FROM MCO2.node_1";
                 }
 
-                while ($row = $result->fetch_assoc()) {
-                  echo "<tr>
-                  <td>" . $row["id"] . "</td>
-                  <td>" . $row["year"] . "</td>
-                  <td>". $row["genre"] . "</td>
-                  <td>" . $row["actor"] . "</td>
-                  <td>" . $row["director"] . "</td>
-                  <td><button id='delete'>x</button></td>
-                </tr>";
-              
-                }
+                    $result = $connection->query($sql);
+
+                    if(!$result) {
+                      die("Invalid query: " . $connection->error);
+                    }
+
+                    while ($row = $result->fetch_assoc()) {
+                      echo "<tr>
+                      <td>" . $row["title"] . "</td>
+                      <td>" . $row["year"] . "</td>
+                      <td>". $row["genre"] . "</td>
+                      <td>" . $row["actor"] . "</td>
+                      <td>" . $row["director"] . "</td>
+                      <td><button id='delete'>x</button></td>
+                    </tr>";
+                  
+                    }
+                
 
             ?>
 
-
-            <tr>
-              <td>#28</td>
-              <td>2002</td>
-              <td>Not Available</td>
-              <td>Jeff Jingle</td>
-              <td>Greg Fritzpatrick</td>
-              <td><button id="delete">x</button></td>
-            </tr>
-            <tr>
-              <td>#7 Train: An Immigrant Journey, The</td>
-              <td>2000</td>
-              <td>Documentary</td>
-              <td>Hye Jung Park</td>
-              <td>Not Available</td>
-              <td><button id="delete">x</button></td>
-            </tr>
-            <tr>
-                <td>$</td>
-                <td>1971</td>
-                <td>Comedy</td>
-                <td>Richard (I) Brooks</td>
-                <td>Darrell (I) Armstrong</td>
-                <td><button id="delete">x</button></td>
-              </tr>
               <tr>
                 <td><input type="text" placeholder="Enter Title"></td>
                 <td><input type="text" placeholder="Enter Year"></td>
