@@ -1,7 +1,7 @@
 # STADVDB-MCO2
 
 
-If index.html is provided, Run https://alyannaabalos.github.io/STADVDB-MCO2/ on your web browser.
+If index.html is provided, open https://alyannaabalos.github.io/STADVDB-MCO2/ on your web browser.
 
 If not,
 
