@@ -35,12 +35,13 @@
             </tr>
 
             <?php
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $database = "mco2";
+                $hostname="127.0.0.1";
+                $dbName = "mco2_imdb_database";
+                $port = "51559";
 
-                $connection = new mysqli($servername, $username, $password, $database);
+                $connection = mysqli_init();
+                //$connection->ssl_set(NULL, NULL, $ssl, NULL, NULL);
+                $connection->real_connect($hostname, '', '', $dbName, $port);
 
                 if ($connection->connect_error) {
                   die("Connection failed: " . $connection->connect_error);
@@ -48,16 +49,16 @@
 
                 if (isset($_POST['selection'])) {
                     if ($_POST['selection'] == 'before') {
-                        $sql = "SELECT * FROM MCO2.node_2";
+                        $sql = "SELECT * FROM mco2_imdb_database.trimmed_node_2";
                     } elseif ($_POST['selection'] == 'after') {
-                        $sql = "SELECT * FROM MCO2.node_3";
+                        $sql = "SELECT * FROM mco2_imdb_database.trimmed_node_3";
                     } else {
-                        $sql = "SELECT * FROM MCO2.node_1";
+                        $sql = "SELECT * FROM mco2_imdb_database.trimmed_node_1";
                     }
                 }
                 else {
                   // Default selection value
-                  $sql = "SELECT * FROM MCO2.node_1";
+                  $sql = "SELECT * FROM mco2_imdb_database.trimmed_node_1";
                 }
 
                     $result = $connection->query($sql);
