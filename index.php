@@ -18,8 +18,6 @@
             <form method="post">
                 <select name="selection" id="selection" onchange="this.form.submit()">
                     <option value="all" <?php if(isset($_POST['selection']) && $_POST['selection']=='all'){echo 'selected';} ?>>ALL MOVIES</option>
-                    <option value="before" <?php if(isset($_POST['selection']) && $_POST['selection']=='before'){echo 'selected';} ?>>Movies before 1980</option>
-                    <option value="after" <?php if(isset($_POST['selection']) && $_POST['selection']=='after'){echo 'selected';} ?>>Movies after 1980</option>
                 </select>
             </form>
         </div>
@@ -42,18 +40,8 @@
             <?php
             require_once 'db.php'; // Include the db.php file for database configurations
 
-            if (isset($_POST['selection'])) {
-                if ($_POST['selection'] == 'before') {
-                    $sql = "SELECT * FROM trimmed_node_2";
-                } elseif ($_POST['selection'] == 'after') {
-                    $sql = "SELECT * FROM trimmed_node_3";
-                } else {
-                    $sql = "SELECT * FROM trimmed_node_1";
-                }
-            } else {
-                // Default selection value
-                $sql = "SELECT * FROM trimmed_node_1";
-            }
+            // Default selection value
+            $sql = "SELECT * FROM trimmed_node_1";
 
             $result = $connection->query($sql);
 

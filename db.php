@@ -1,7 +1,7 @@
 <?php
 $hostname="127.0.0.1";
 $dbName = "mco2_imdb_database";
-$port = "63895";
+$port = "3306";
 
 $connection = mysqli_init();
 //$connection->ssl_set(NULL, NULL, $ssl, NULL, NULL);
